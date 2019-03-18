@@ -1,0 +1,10 @@
+/SRC/v15
+/SRC/Library
+*.csproj
+*.sln
+/SRC/Temp/TarGZ
+/SRC/Temp
+/BUILD
+/SRC/.vs/AI_Utility/v15/Server/sqlite3/db.lock
+/SRC/.vs/AI_Utility/v15/Server/sqlite3/storage.ide
+/SRC/obj/Debug
