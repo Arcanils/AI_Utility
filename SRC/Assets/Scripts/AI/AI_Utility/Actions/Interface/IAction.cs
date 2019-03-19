@@ -15,7 +15,7 @@ namespace AI.AI_Utility
 
 	public interface IAction
 	{
-		string NameId { get; }
+		InfoId Id { get; }
 
 		float Cooldown { get; set; }
 		bool InCooldown { get; }

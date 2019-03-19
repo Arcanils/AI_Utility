@@ -9,7 +9,7 @@ namespace AI.AI_Utility
 	{
 		bool Add(IAction action);
 		IAction Create();
-		bool Contains(string actionId);
+		bool Contains(InfoId id);
 		void Clear();
 	}
 }

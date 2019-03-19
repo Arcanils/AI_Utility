@@ -15,7 +15,7 @@ namespace AI.AI_Utility
 		bool Add(IUtilityAi ai);
 		IUtilityAi GetAi(string aiId);
 		IUtilityAi CreateAi(string aiId);
-		string Contains(string aiId);
+		bool Contains(string aiId);
 		void Clear();
 
 	}
