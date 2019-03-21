@@ -38,9 +38,17 @@ namespace AI.AI_Utility
             return m_actions.ContainsKey(id);
         }
 
-        public IAction Create()
+        public IAction Create(InfoId id)
         {
-            throw new NotImplementedException();
+            IAction action;
+
+            if (!m_actions.TryGetValue(id, out action))
+            {
+                //Error case
+                return null;
+            }
+
+            return action.Clone();
         }
     }
 }

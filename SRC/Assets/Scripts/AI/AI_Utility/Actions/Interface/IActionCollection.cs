@@ -8,7 +8,7 @@ namespace AI.AI_Utility
 	public interface IActionCollection
 	{
 		bool Add(IAction action);
-		IAction Create();
+		IAction Create(InfoId id);
 		bool Contains(InfoId id);
 		void Clear();
 	}

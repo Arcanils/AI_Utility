@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Assets.Scripts.Implem
+{
+    public interface IEntityAction
+    {
+        void Idle();
+    }
+
+    public class EntityAgent : IEntityAction
+    {
+        public void Idle()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

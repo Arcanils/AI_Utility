@@ -1,3 +1,37 @@
 // Clone partout
 Create Action existante (clone)
 Replace Id partout
+
+
+
+----
+Biche
+
+Actions: Idle, MoveTo, Boire, Manger, Fuir, Death
+
+-----
+Loup
+
+Actions: Idle, MoveTo, Attack, Boire, Death, Manger, Grogner
+
+
+Entité:
+Idle, MoveTo, Boire, Manger, Death
+
+Biche: 
+Fuir,
+
+Loup:
+Grogner
+
+IEntityAction
+
+IWolfAction : IEntityAction
+
+IDearAction : IEntityAction
+
+
+WolfController
+{
+	Dictionnary<IdAction, IRefActionToExecute>
+}
