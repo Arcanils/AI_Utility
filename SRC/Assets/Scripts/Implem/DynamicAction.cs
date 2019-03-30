@@ -20,7 +20,7 @@ namespace AI.AI_Utility
         {
             get
             {
-                return m_info.c
+				return 0f;
             }
 
             set
@@ -53,7 +53,15 @@ namespace AI.AI_Utility
             }
         }
 
-        public IAction Clone()
+		public EActionType ActionType
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public IAction Clone()
         {
             throw new NotImplementedException();
         }

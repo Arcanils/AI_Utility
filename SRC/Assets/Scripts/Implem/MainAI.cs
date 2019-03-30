@@ -1,13 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using UnityEngine;
 
 
-public class MainAI
+namespace AI.AI_Utility
 {
-	public void Main()
+	public class MainAI : MonoBehaviour
 	{
-		//Create ai creator
+		public void Awake()
+		{
+			TestMethod();
+		}
+
+		public void TestMethod()
+		{
+			var loader = new LoaderHandlers();
+			loader.LoadActions();
+			loader.DisplayContents();
+		}
 	}
 }

@@ -33,6 +33,16 @@ namespace AI.AI_Utility
 
 		public EActionStatus Status { get; protected set; }
 
+		public InfoId Id { get; protected set; }
+
+		public EActionType ActionType { get; protected set; }
+
+
+		public IAction Clone()
+		{
+			throw new NotImplementedException();
+		}
+
 		public void Execute(IContext context)
 		{
 			throw new NotImplementedException();
