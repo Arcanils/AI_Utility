@@ -35,3 +35,36 @@ WolfController
 {
 	Dictionnary<IdAction, IRefActionToExecute>
 }
+---------------------
+
+Actions database autogénéré
+=> Context auto généré aussi
+=> Name action auto généré aussi
+
+Consideration context auto généré
+=> Context name
+=> Get value from name (name auto généré)
+=> on selectionne la curve / values
+
+Options =>
+Context a choisir
+Name option a choisir
+Actions int a choisir
+Considerations int[] à choisir
+
+
+Behaviour
+Context a choisir
+Name behaviour a choisir
+Options int[] à choisir
+Considerations int [] à choisir
+
+
+
+------------------
+
+Genere Consideration comme les actions
+
+Creer une fake data complete
+Generer une AI à partir de la fake data
+La faire s'execute

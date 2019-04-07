@@ -71,6 +71,26 @@ namespace AI.AI_Utility
 			}
 		}
 
+		public void GetDatas(out string[] actionContextNames, out string[][] actionNames)
+		{
+			actionContextNames = new string[m_loaders.Count];
+			actionNames = new string[m_loaders.Count][];
+
+			var index = 0;
+			foreach (var keyvalue in m_loaders)
+			{
+				actionContextNames[index] = keyvalue.Key;
+				var actions = keyvalue.Value.Actions;
+				var indexAction = 0;
+
+				actionNames[index] = new string[actions.Count];
+				foreach (var name in actions.Keys)
+				{
+					actionNames[index][indexAction++] = name;
+				}
+				++index;
+			}
+		}
 
 		public void DisplayContents()
 		{

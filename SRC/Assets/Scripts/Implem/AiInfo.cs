@@ -16,32 +16,36 @@ namespace AI.AI_Utility.Info
 
 	public class ConsiderationInfo
     {
-        public InfoId Id;
-        public int ContextId;
+		public string Name;
+
+        public IdInfoIndex RefConsideration;
 		public int ModeCurve;
+		public bool Invert;
 		public float[] ExtraValues;
 	}
 
 	public class ActionInfo
-    {
-        public InfoId Id;
-        public int ContextId;
-		public int ActionToLaunchId;
+	{
+		public string Name;
+
+		public IdInfoIndex RefAction;
 	}
 
 	public class OptionInfo
     {
-        public InfoId Id;
-        public string RefActionId;
-		public string[] RefsConsiderationId;
+		public string Name;
+
+		public int ActionInfoIndex;
+		public int[] ConsiderationInfoIndexes;
 		public int ModeMeasure;
 	}
 
 	public class BehaviourInfo
 	{
-		public InfoId Id;
-		public string[] RefsOptionsId;
-		public string[] RefsConsiderationId;
+		public string Name;
+
+		public int[] OptionInfoIndexes;
+		public int[] ConsiderationInfoIndexes;
 	}
 
 }

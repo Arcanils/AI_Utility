@@ -40,4 +40,14 @@ namespace AI.AI_Utility
 			((IEntityAction)actor).Idle();
 		}
 	}
+
+
+	public static class HandlerDear
+	{
+		[AgentActionAttribute()]
+		private static void Flee(Object actor)
+		{
+			((IDearAction)actor).Flee();
+		}
+	}
 }
