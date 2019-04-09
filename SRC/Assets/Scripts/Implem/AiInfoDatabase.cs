@@ -46,26 +46,14 @@ namespace AI.AI_Utility.Info
 			m_loader = new LoaderHandlers();
 			m_loader.LoadActions();
 
-			ComputeActions();
+            ComputeConsiderationsAndActions();
 		}
 
 
-		private void ComputeActions()
+		private void ComputeConsiderationsAndActions()
 		{
-			m_loader.GetDatas(out m_actionContextNames, out m_actionNames);
+			m_loader.GetDatas(out m_actionContextNames, out m_actionNames, out m_considerationContextNames, out m_considerationNames);
 		}
-
-		private void ComputeConsiderations()
-		{
-			m_considerationContextNames = new string[] { "Self", "World", "Entity" };
-			m_considerationNames = new string[][]
-			{
-				new string[]{"Thirst"},
-				new string[]{ },
-				new string[]{ },
-			};
-		}
-
 
 	}
 }

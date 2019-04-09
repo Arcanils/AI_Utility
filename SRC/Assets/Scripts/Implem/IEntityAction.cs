@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace AI.AI_Utility
 {
@@ -12,7 +13,14 @@ namespace AI.AI_Utility
 		void Sleep();
 	}
 
-	public interface IWolfAction : IEntityAction
+    public interface IEntityConsideration
+    {
+        float Thirst { get; }
+        float Hunger { get; }
+    }
+
+
+    public interface IWolfAction : IEntityAction
 	{
 		void Attack();
 		void Howl();
@@ -66,9 +74,27 @@ namespace AI.AI_Utility
 		}
 	}
 
-	public class DearAgent : IDearAction
-	{
-		public void Death()
+	public class DearAgent : IDearAction, IEntityConsideration
+    {
+        private float m_hunger = 0f;
+        public float Hunger
+        {
+            get
+            {
+                return m_hunger;
+            }
+        }
+
+        private float m_thirst = 0f;
+        public float Thirst
+        {
+            get
+            {
+                return m_thirst;
+            }
+        }
+
+        public void Death()
 		{
 			throw new System.NotImplementedException();
 		}
