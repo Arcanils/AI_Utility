@@ -7,7 +7,7 @@ namespace AI.AI_Utility
 {
 	public interface IConsiderationCollection
 	{
-		void Add(IConsideration consideration);
+		bool Add(IConsideration consideration);
 		IConsideration Create(string considerationId);
 		bool Contains(string considerationId);
 		void Clear();

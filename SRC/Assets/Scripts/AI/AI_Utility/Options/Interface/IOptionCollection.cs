@@ -10,7 +10,7 @@ namespace AI.AI_Utility
 		IActionCollection Actions { get; }
 		IConsiderationCollection Considerations { get; }
 
-		void Add(IOption option);
+		bool Add(IOption option);
 		IOption Create(string optionId);
 		bool Contains(string optionId);
 		void Clear();

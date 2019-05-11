@@ -25,23 +25,11 @@ namespace AI.AI_Utility.Info
 		private string[] m_actionContextNames;
 		private string[][] m_actionNames;
 
-		[SerializeField]
-		private List<ActionInfo> m_actionInfos;
 
 		private string[] m_considerationContextNames;
 		private string[][] m_considerationNames;
 
-		[SerializeField]
-		private List<ConsiderationInfo> m_considerationInfos;
-
-		[SerializeField]
-		private List<OptionInfo> m_optionInfos;
-
-		[SerializeField]
-		private List<BehaviourInfo> m_behaviourInfos;
-
-
-		private void Load()
+		public void Load()
 		{
 			m_loader = new LoaderHandlers();
 			m_loader.LoadActions();

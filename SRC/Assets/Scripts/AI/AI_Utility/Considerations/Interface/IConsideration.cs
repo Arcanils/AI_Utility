@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AI.AI_Utility
 {
-	public interface IConsideration
+	public interface IConsideration : IClone<IConsideration>
 	{
 		string NameId { get; }
 

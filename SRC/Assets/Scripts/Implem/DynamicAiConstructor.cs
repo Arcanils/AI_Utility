@@ -7,6 +7,11 @@ namespace AI.AI_Utility
 {
     public class DynamicAiConstructor : AiConstructor
     {
+
+		private void Init()
+		{
+			AIs = new AiCollection();
+		}
         public IUtilityAi Create(Info.AiInfo info)
         {
             if (!AIs.Contains(info.Id))

@@ -68,3 +68,10 @@ Genere Consideration comme les actions
 Creer une fake data complete
 Generer une AI à partir de la fake data
 La faire s'execute
+
+------------
+
+Implem Action, consideration, option, behaviour
+
+Créer runtime ai,
+Implem AI (think ...)

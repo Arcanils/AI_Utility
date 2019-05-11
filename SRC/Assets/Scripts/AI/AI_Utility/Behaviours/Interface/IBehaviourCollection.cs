@@ -8,7 +8,7 @@ namespace AI.AI_Utility
 	public interface IBehaviourCollection
 	{
 		IOptionCollection Options { get; }
-		void Add(IBehaviour behaviour);
+		bool Add(IBehaviour behaviour);
 		IBehaviour Create(string behaviourId);
 		bool Contains(string behaviourId);
 		void Clear();
