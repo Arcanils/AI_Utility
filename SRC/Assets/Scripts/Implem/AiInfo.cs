@@ -5,6 +5,7 @@ using System.Text;
 
 namespace AI.AI_Utility.Info
 {
+	[Serializable]
 	public class AiInfo
     {
         public InfoId Id;
@@ -14,6 +15,7 @@ namespace AI.AI_Utility.Info
 		public BehaviourInfo[] Behaviours;
 	}
 
+	[Serializable]
 	public class ConsiderationInfo
     {
         public InfoId Id;
@@ -22,6 +24,7 @@ namespace AI.AI_Utility.Info
 		public float[] ExtraValues;
 	}
 
+	[Serializable]
 	public class ActionInfo
     {
         public InfoId Id;
@@ -29,6 +32,7 @@ namespace AI.AI_Utility.Info
 		public int ActionToLaunchId;
 	}
 
+	[Serializable]
 	public class OptionInfo
     {
         public InfoId Id;
@@ -37,6 +41,7 @@ namespace AI.AI_Utility.Info
 		public int ModeMeasure;
 	}
 
+	[Serializable]
 	public class BehaviourInfo
 	{
 		public InfoId Id;
