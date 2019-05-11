@@ -13,8 +13,11 @@ namespace AI.AI_Utility
 	{
 	}
 
+    public class ConsiderationAttribute : Attribute { };
 
-	[HandlerAttribute()]
+
+
+    [HandlerAttribute()]
 	public static class HandlerEntity
 	{
 		[AgentActionAttribute()]
@@ -22,6 +25,12 @@ namespace AI.AI_Utility
 		{
 			((IEntityAction)actor).Idle();
 		}
+
+        [ConsiderationAttribute()]
+        private static float GetThirst(Object actor)
+        {
+            return ((IEntityConsideration)actor).Thirst;
+        }
 	}
 
 
@@ -38,6 +47,16 @@ namespace AI.AI_Utility
 		private static void Run(Object actor)
 		{
 			((IEntityAction)actor).Idle();
+		}
+	}
+
+
+	public static class HandlerDear
+	{
+		[AgentActionAttribute()]
+		private static void Flee(Object actor)
+		{
+			((IDearAction)actor).Flee();
 		}
 	}
 }
