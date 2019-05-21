@@ -75,3 +75,23 @@ Implem Action, consideration, option, behaviour
 
 Créer runtime ai,
 Implem AI (think ...)
+
+
+----------------------
+Data :
+AiInfo, ActionInfo, ConsiderationInfo, OptionInfo, BehaviourInfo
+AiInfoDatabase => Constructeur delegate action / consideration + names compute
+
+Runtime :
+IUtilityAI, IAction, IConsideration, IOption, IBehaviour
+
+DynamicAiConstructor => Construire l'ia. A besoin de tout de AiInfoDatabase pour créer action / consideration. Puis donne AiInfo pour lui sortir une IUtilityAI
+-----------
+Action pour s'executer
+MoveToTarget => LaunchAction, passer la cible executant l'action, progress de l'action,
+---
+
+Consideration update
+Tape dans le IContext convert pour lui puis get les values du icontext + interface consideration => calcule l'utility via la value calculé
+-----------
+IContext => Stock entités values + ref extern ?

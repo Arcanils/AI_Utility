@@ -14,7 +14,7 @@ namespace AI.AI_Utility
 
 		public void Awake()
 		{
-			TestMethod();
+			CreateAI();
 		}
 
 		public void TestMethod()

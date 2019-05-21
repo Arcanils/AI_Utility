@@ -19,16 +19,25 @@ namespace AI.AI_Utility
         Interruptable,
     }
 
+	public interface IActionExecute
+	{
+		UnityEngine.Object Actor { get; }
+		EActionStatus Status { get; set; }
+	}
+
     public interface IAction : IClone<IAction>
-    {
+	{
 		InfoId Id { get; }
 
-		float Cooldown { get; set; }
+		float Cooldown { get;}
 		bool InCooldown { get; }
 
 		EActionStatus Status { get; }
         EActionType ActionType { get; }
 
+		void Initialize(Info.ActionInfo info);
+
         void Execute(IContext context);
+		EActionStatus ManualUpdate(float deltaTime);
 	}
 }

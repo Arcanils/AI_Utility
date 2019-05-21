@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace AI.AI_Utility
 {
-    public delegate void ActionToExecute(UnityEngine.Object actor);
+    public delegate System.Collections.IEnumerator ActionToExecute(IActionExecute refAction);
     public delegate float ConsiderationToGet(UnityEngine.Object actor);
 
     public class LoaderHandlers
@@ -122,6 +122,33 @@ namespace AI.AI_Utility
                     actionNames[index][indexConsiderations++] = name;
                 }
                 ++index;
+			}
+		}
+
+		public void FillCollections(ref IActionCollection actionCollection, ref IConsiderationCollection considerationCollection)
+		{
+			foreach (var keyvalue in m_loaders)
+			{
+				var key = keyvalue.Key;
+				var loader = keyvalue.Value;
+				var dicoActions = loader.Actions;
+				foreach (var keyvalueAction in dicoActions)
+				{
+					var keyAction = keyvalueAction.Key;
+					var deleg = keyvalueAction.Value;
+					var id = new InfoId() { NamespaceId = key, NameId = keyAction };
+					var newAction = new DynamicAction(id, deleg);
+					actionCollection.Add(newAction);
+				}
+				var dicoConsiderations = loader.Considerations;
+				foreach (var keyvalueConsideration in dicoConsiderations)
+				{
+					var keyConsideration = keyvalueConsideration.Key;
+					var deleg = keyvalueConsideration.Value;
+					var id = new InfoId() { NamespaceId = key, NameId = keyConsideration };
+					var newConsideration = new DynamicAction(id, deleg);
+					considerationCollection.Add(newConsideration);
+				}
 			}
 		}
 

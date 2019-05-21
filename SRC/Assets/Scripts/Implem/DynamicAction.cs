@@ -1,74 +1,73 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace AI.AI_Utility
 {
-    public interface IActionExecute
-    {
-        EActionStatus Status { get; }
-        void Execute();
-    }
-    public class DynamicAction : IAction
-    {
-        private IActionExecute m_refActionToExecute;
+    public class DynamicAction : IAction , IActionExecute
+	{
+        private ActionToExecute m_refActionToExecute;
         private Info.ActionInfo m_info;
 
-        public float Cooldown
-        {
-            get
-            {
-				return 0f;
-            }
+		private InfoId m_id;
+		private float m_cd;
+		private EActionStatus m_status;
+		private EActionType m_actionType;
+		private UnityEngine.Object m_actor;
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+		private IEnumerator m_routineAction;
 
-        public InfoId Id
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public bool InCooldown
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public EActionStatus Status
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-		public EActionType ActionType
+		public DynamicAction(InfoId id, ActionToExecute action)
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
+			m_id = id;
+			m_refActionToExecute = action;
 		}
 
-		public IAction Clone()
-        {
-            throw new NotImplementedException();
-        }
+		public DynamicAction(DynamicAction actionToCopy)
+		{
+			this.m_refActionToExecute = actionToCopy.m_refActionToExecute;
+			this.m_info = actionToCopy.m_info;
+			this.m_id = actionToCopy.m_id;
+		}
 
-        public void Execute(IContext context)
-        {
-            throw new NotImplementedException();
-        }
-    }
+
+		#region IAction implem
+
+		InfoId IAction.Id { get { return m_id; } }
+		float IAction.Cooldown { get { return m_cd; } }
+		bool IAction.InCooldown  {get { return false; } }
+		EActionStatus IAction.Status { get { return m_status; } }
+		EActionType IAction.ActionType { get { return m_actionType; } }
+
+		IAction IClone<IAction>.Clone()
+		{
+			return new DynamicAction(this);
+		}
+		
+		void IAction.Initialize(Info.ActionInfo info)
+		{
+			m_info = info;
+		}
+
+		void IAction.Execute(IContext context)
+		{
+			m_routineAction = m_refActionToExecute(this);
+		}
+
+		EActionStatus IAction.ManualUpdate(float deltaTime)
+		{
+			if (m_routineAction == null)
+				return EActionStatus.Failure;
+
+			m_routineAction.MoveNext();
+			return m_status;
+		}
+		#endregion
+
+		#region IActionExecute implem
+
+		EActionStatus IActionExecute.Status { get { return m_status; } set { m_status = value; } }
+		UnityEngine.Object IActionExecute.Actor { get { return m_actor; } }
+
+		#endregion
+	}
 }

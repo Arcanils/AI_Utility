@@ -37,6 +37,10 @@ namespace AI.AI_Utility.Info
             ComputeConsiderationsAndActions();
 		}
 
+		public void FillCollections(ref IActionCollection actionCollection, ref IConsiderationCollection considerationCollection)
+		{
+			m_loader.ge
+		}
 
 		private void ComputeConsiderationsAndActions()
 		{
