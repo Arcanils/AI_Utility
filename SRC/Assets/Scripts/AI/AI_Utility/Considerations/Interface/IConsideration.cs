@@ -13,6 +13,8 @@ namespace AI.AI_Utility
 		Utility Utility { get; }
 		float Weight { get; set; }
 
+		void Initialize(Info.ConsiderationInfo info);
+
 		void Consider(IContext context);
 	}
 }

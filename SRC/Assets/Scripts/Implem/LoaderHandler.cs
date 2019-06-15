@@ -8,7 +8,7 @@ using UnityEngine;
 namespace AI.AI_Utility
 {
     public delegate System.Collections.IEnumerator ActionToExecute(IActionExecute refAction);
-    public delegate float ConsiderationToGet(UnityEngine.Object actor);
+    public delegate float ConsiderationToGet(IContext context);
 
     public class LoaderHandlers
 	{
@@ -125,6 +125,20 @@ namespace AI.AI_Utility
 			}
 		}
 
+		public IAction GetAction(string nameContext, string nameAction)
+		{
+			var deleg = m_loaders[nameContext].Actions[nameAction];
+			var id = new InfoId() { NamespaceId = nameContext, NameId = nameAction };
+			return new DynamicAction(id, deleg);
+		}
+
+		public IConsideration GetConsideration(string nameContext, string nameConsideration)
+		{
+			var deleg = m_loaders[nameContext].Considerations[nameConsideration];
+			var id = new InfoId() { NamespaceId = nameContext, NameId = nameConsideration };
+			return new DynamicConsideration(id, deleg);
+		}
+
 		public void FillCollections(ref IActionCollection actionCollection, ref IConsiderationCollection considerationCollection)
 		{
 			foreach (var keyvalue in m_loaders)
@@ -138,7 +152,7 @@ namespace AI.AI_Utility
 					var deleg = keyvalueAction.Value;
 					var id = new InfoId() { NamespaceId = key, NameId = keyAction };
 					var newAction = new DynamicAction(id, deleg);
-					actionCollection.Add(newAction);
+					//actionCollection.Add(newAction);
 				}
 				var dicoConsiderations = loader.Considerations;
 				foreach (var keyvalueConsideration in dicoConsiderations)
@@ -146,8 +160,8 @@ namespace AI.AI_Utility
 					var keyConsideration = keyvalueConsideration.Key;
 					var deleg = keyvalueConsideration.Value;
 					var id = new InfoId() { NamespaceId = key, NameId = keyConsideration };
-					var newConsideration = new DynamicAction(id, deleg);
-					considerationCollection.Add(newConsideration);
+					var newConsideration = new DynamicConsideration(id, deleg);
+					//considerationCollection.Add(newConsideration);
 				}
 			}
 		}

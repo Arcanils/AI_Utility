@@ -39,7 +39,41 @@ namespace AI.AI_Utility.Info
 
 		public void FillCollections(ref IActionCollection actionCollection, ref IConsiderationCollection considerationCollection)
 		{
-			m_loader.ge
+			for (int i = 0, iLength = m_actionContextNames.Length; i < iLength; ++i)
+			{
+				var contextName = m_actionContextNames[i];
+				for (int j = 0, jLength = m_actionNames[i].Length; j < jLength; ++j)
+				{
+					var actionName = m_actionNames[i][j];
+
+					var action = m_loader.GetAction(contextName, actionName);
+
+					if (action == null)
+					{
+						throw new System.NullReferenceException();
+					}
+
+					actionCollection.Add(action, new IdInfoIndex(i, j));
+				}
+			}
+
+			for (int i = 0, iLength = m_considerationContextNames.Length; i < iLength; ++i)
+			{
+				var contextName = m_considerationContextNames[i];
+				for (int j = 0, jLength = m_considerationNames[i].Length; j < jLength; ++j)
+				{
+					var considerationName = m_considerationNames[i][j];
+
+					var consideration = m_loader.GetConsideration(contextName, considerationName);
+
+					if (consideration == null)
+					{
+						throw new System.NullReferenceException();
+					}
+
+					considerationCollection.Add(consideration, new IdInfoIndex(i, j));
+				}
+			}
 		}
 
 		private void ComputeConsiderationsAndActions()

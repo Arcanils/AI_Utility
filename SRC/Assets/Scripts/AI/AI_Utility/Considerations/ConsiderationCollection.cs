@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AI.AI_Utility.Info;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,19 +8,18 @@ namespace AI.AI_Utility
 {
 	public class ConsiderationCollection : IConsiderationCollection
 	{
-		private Dictionary<string, IConsideration> m_considerations;
+		private Dictionary<IdInfoIndex, IConsideration> m_considerations;
 
 		public ConsiderationCollection()
 		{
-			m_considerations = new Dictionary<string, IConsideration>();
+			m_considerations = new Dictionary<IdInfoIndex, IConsideration>();
 		}
 
-		public bool Add(IConsideration consideration)
+		public bool Add(IConsideration consideration, IdInfoIndex id)
 		{
 			if (consideration == null || consideration.Equals(null))
 				return false;
-
-			var id = consideration.NameId;
+			
 			if (Contains(id))
 				return false;
 
@@ -33,12 +33,12 @@ namespace AI.AI_Utility
 			m_considerations.Clear();
 		}
 
-		public bool Contains(string id)
+		public bool Contains(IdInfoIndex id)
 		{
 			return m_considerations.ContainsKey(id);
 		}
 
-		public IConsideration Create(string id)
+		public IConsideration Create(IdInfoIndex id)
 		{
 			IConsideration consideration;
 

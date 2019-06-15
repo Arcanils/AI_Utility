@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AI.AI_Utility.Info;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,19 +8,18 @@ namespace AI.AI_Utility
 {
     public class ActionCollection : IActionCollection
     {
-        private Dictionary<InfoId, IAction> m_actions;
+        private Dictionary<IdInfoIndex, IAction> m_actions;
 
         public ActionCollection()
         {
-            m_actions = new Dictionary<InfoId, IAction>();
+            m_actions = new Dictionary<IdInfoIndex, IAction>();
         }
 
-        public bool Add(IAction action)
+        public bool Add(IAction action, IdInfoIndex id)
         {
             if (action == null || action.Equals(null))
                 return false;
-
-            var id = action.Id;
+			
             if (Contains(id))
                 return false;
 
@@ -33,12 +33,12 @@ namespace AI.AI_Utility
             m_actions.Clear();
         }
 
-        public bool Contains(InfoId id)
+        public bool Contains(IdInfoIndex id)
         {
             return m_actions.ContainsKey(id);
         }
 
-        public IAction Create(InfoId id)
+        public IAction Create(IdInfoIndex id)
         {
             IAction action;
 

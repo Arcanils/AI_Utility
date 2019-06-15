@@ -29,7 +29,7 @@ namespace AI.AI_Utility
 			var db = m_dbScriptable.DB;
 			db.Load();
 
-			var constructor = new DynamicAiConstructor();
+			var constructor = new DynamicAiConstructor(db);
 
 			foreach(var info in m_aiInfoScriptables)
 			{

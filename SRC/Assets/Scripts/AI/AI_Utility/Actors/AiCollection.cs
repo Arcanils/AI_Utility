@@ -19,6 +19,7 @@ namespace AI.AI_Utility
 		private IOptionCollection m_options;
 		private IBehaviourCollection m_behaviours;
 
+		private Info.AiInfoDatabase m_db;
 
 		public AiCollection(Info.AiInfoDatabase db)
 		{

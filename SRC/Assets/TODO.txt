@@ -95,3 +95,41 @@ Consideration update
 Tape dans le IContext convert pour lui puis get les values du icontext + interface consideration => calcule l'utility via la value calculé
 -----------
 IContext => Stock entités values + ref extern ?
+
+-------
+Reminder:
+
+ActionInfo =>
+ActionToExecute =>
+IAction => interface pour l'usage intern de l'action
+IActionToExecute => interface de l'action runtime pour l'execution de l'action
+DynamicAction => Action Runtime qui contient la délagate + les params . Sert de wrapper pour éxecuter l'action
+
+ConsiderationInfo =>
+ConsiderationToGet =>
+IConsideration =>
+IContext =>
+DynamicConsideration => Consideration runtime qui contient la délégate + params pour calculté une utility par rapport à un IContext
+
+AiInfoDatabase => Contiens les noms + les délégates des actions / consideration possible
+
+AiCollection => Coll
+
+-------------------
+TODO:
+DynamicAiConstructor => CreateAiDynamic
+DynamicOption
+DynamicBehaviour
+
+-------------
+Step =>
+AiInfoDatabase.Load()
+	=> new LoaderHandlers();
+	=> ComputeConsiderationsAndActions // delegate + names
+
+new DynamicAiConstructor(db);
+	Init => new AiCollection 
+		AiCollection Constructor	=> Create collection action, consideration, options, behaviours,
+									=> Populate les collections action et considerations;
+
+constructor.Create(info.Data); // Fill with ai data
